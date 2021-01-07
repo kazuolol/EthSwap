@@ -2,10 +2,12 @@ import React, { Component, useEffect, useState } from 'react';
 import Web3 from 'web3';
 import EthSwap from '../abis/EthSwap.json'
 import Token from '../abis/Token.json'
-import './App.css';
-import 'ui-neumorphism/dist/index.css'
+
 import MainCard from './biggerPieces/MainCard'
 import QrButton from './smallerPieces/QrButton'
+import './App.css';
+import 'ui-neumorphism/dist/index.css'
+
 import { ProgressBar } from '@react95/core'
 
 
@@ -55,6 +57,7 @@ class App extends Component {
       window.alert('EthSwap contract not deployed to detected network')
     }
     console.log('EthSwap contract:', this.state.ethSwap)
+    this.setState({ loading: false })
   }
 
   async loadWeb3() {
@@ -77,17 +80,26 @@ class App extends Component {
       token: {},
       ethSwap: {},
       ethBalance: '0',
-      tokenBalance: '0'
+      tokenBalance: '0',
+      loading: true
     }
   }
 
-  render() {
+  render() {  
+    let content
+    
+    if (this.state.loading) {
+      content = <p id="loader" className="text-center">Loading...</p>
+    } else {
+      content = <MainCard className="mainCard" account={this.state.account} />
+    }
+
     return (
       <>
 
         <QrButton className="qrButton" account={this.state.account} />
         <div className="centered">
-          <MainCard className="mainCard" account={this.state.account} />
+          {content}
         </div>
 
       </>
