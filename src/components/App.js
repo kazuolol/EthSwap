@@ -22,20 +22,39 @@ class App extends Component {
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] })
 
-    const balance = await web3.eth.getBalance(this.state.account)
-    this.setState({ balance })
-    console.log(balance)
+    const ethBalance = await web3.eth.getBalance(this.state.account)
+    this.setState({ ethBalance })
 
+    console.log('eth balance:', ethBalance)
+
+    //load token
     const networkId = await web3.eth.net.getId()
     const tokenData = Token.networks[networkId]
+
     if (tokenData) {
       const token = new web3.eth.Contract(Token.abi, tokenData.address)
-      console.log(token)
+      this.setState({ token })
+
+      let tokenBalance = await token.methods.balanceOf(this.state.account).call()
+
+      console.log('token balance:', this.state.tokenBalance)
+      console.log('token contract:', token)
+
+      this.setState({ tokenBalance: tokenBalance })
+
     } else {
       window.alert('token contract not deployed to detected network')
     }
+    //load ethswap 
+    const ethSwapData = EthSwap.networks[networkId]
 
-    
+    if (ethSwapData) {
+      const ethSwap = new web3.eth.Contract(EthSwap.abi, ethSwapData.address)
+      this.setState({ ethSwap })
+    } else {
+      window.alert('EthSwap contract not deployed to detected network')
+    }
+    console.log('EthSwap contract:', this.state.ethSwap)
   }
 
   async loadWeb3() {
@@ -55,7 +74,10 @@ class App extends Component {
     super(props)
     this.state = {
       account: '',
-      ethBalance: 0
+      token: {},
+      ethSwap: {},
+      ethBalance: '0',
+      tokenBalance: '0'
     }
   }
 
