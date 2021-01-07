@@ -1,9 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
-import logo from '../logo.png';
-import anime from '../anime.gif'
 import Web3 from 'web3';
+import EthSwap from '../abis/EthSwap.json'
+import Token from '../abis/Token.json'
 import './App.css';
-import Navbar from './navBar'
 import 'ui-neumorphism/dist/index.css'
 import MainCard from './biggerPieces/MainCard'
 import QrButton from './smallerPieces/QrButton'
@@ -12,8 +11,6 @@ import { ProgressBar } from '@react95/core'
 
 class App extends Component {
 
-  
-
   async componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
@@ -21,14 +18,24 @@ class App extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3;
+
     const accounts = await web3.eth.getAccounts();
-
-
-
     this.setState({ account: accounts[0] })
-    console.log(this.state.account);
+
     const balance = await web3.eth.getBalance(this.state.account)
-    this.setState({ ethBalance: balance })
+    this.setState({ balance })
+    console.log(balance)
+
+    const networkId = await web3.eth.net.getId()
+    const tokenData = Token.networks[networkId]
+    if (tokenData) {
+      const token = new web3.eth.Contract(Token.abi, tokenData.address)
+      console.log(token)
+    } else {
+      window.alert('token contract not deployed to detected network')
+    }
+
+    
   }
 
   async loadWeb3() {
@@ -55,7 +62,7 @@ class App extends Component {
   render() {
     return (
       <>
-     
+
         <QrButton className="qrButton" account={this.state.account} />
         <div className="centered">
           <MainCard className="mainCard" account={this.state.account} />
