@@ -37,7 +37,8 @@ class App extends Component {
       const token = new web3.eth.Contract(Token.abi, tokenData.address)
       this.setState({ token })
 
-      let tokenBalance = await token.methods.balanceOf(this.state.account).call()
+      let tokenBalance = await token.methods.balanceOf(this.state.account).call().toString()
+      console.log(tokenBalance)
 
       console.log('token balance:', this.state.tokenBalance)
       console.log('token contract:', token)
@@ -80,18 +81,23 @@ class App extends Component {
       token: {},
       ethSwap: {},
       ethBalance: '0',
-      tokenBalance: '0',
+      tokenBalance: 0,
       loading: true
     }
   }
 
-  render() {  
+  render() {
     let content
-    
+
     if (this.state.loading) {
-      content = <p id="loader" className="text-center">Loading...</p>
+      content = 
+        <button class="btn btn-primary mr-4" type="button">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span class="sr-only">Loading...</span>
+        </button>
+
     } else {
-      content = <MainCard className="mainCard" account={this.state.account} />
+      content = <MainCard className="mainCard" account={this.state.account} ethBalance={this.state.ethBalance} tokenBalance={this.state.tokenBalance}/>
     }
 
     return (
