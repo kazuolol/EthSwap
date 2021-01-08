@@ -1,29 +1,39 @@
 import React, { useState } from 'react';
 import { Button, Card } from 'ui-neumorphism'
+import computer from '../../computer2.gif'
 import 'ui-neumorphism/dist/index.css'
 
 
 const MainCard = ({ account, ethBalance, tokenBalance }) => {
-    console.log(tokenBalance)
+
+    const date = new Date().toString()
+    
     return (
+        
+        <>
+        <div className="right">
+        <img className="computer" src={computer} />
+        </div>
+         
         <div className="centered">
-        <Card loading width={350} height={350}>
+        
+        <Card loading width={360} height={370}>
+        
         <h1>Eth Swap!</h1>
-        <h5>Welcome, {account}</h5>
+        
+        <h6>Welcome, {account} </h6>
             <form className="form">
-                <div className="input1">
-                    <label name="input1" className="inputLabel">{ethBalance} ETH</label>
+                    
+                    <label name="input1" className="inputLabel">{ethBalance} Ether</label>
                     <input
                         id="input1"
                         type="text"
                         className="formInput"
                         placeholder="0"
                         required />
-                </div>
-                    <div className="input2">
-              
+                    
                    
-                    <label name="input2">{tokenBalance} tokens</label>
+                    <label name="input2">{tokenBalance} Tokens</label>
                     <input
                         id="input2"
                         type="text"
@@ -31,12 +41,14 @@ const MainCard = ({ account, ethBalance, tokenBalance }) => {
                         placeholder="0"
                         required />
                
-                <Button type="submit" className="submitButton">Swap</Button>
-                </div>
+                <Button type="submit" className="submitButton">🔀</Button>
+
+                
             </form>
            
         </Card>
         </div>
+        </>
 
 
 

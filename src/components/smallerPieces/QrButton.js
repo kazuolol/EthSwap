@@ -1,3 +1,4 @@
+import { stringify } from 'querystring';
 import React, { useState } from 'react';
 import { Dialog, Button, Card, Fab } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
@@ -32,11 +33,12 @@ function QrButton({ account }) {
     
 
     const [visible, setVisible] = useState(false);
+    const date = new Date()
 
     return (
         <>
-
-            {visible == true ? alert() : <p className="logoText">Click the logo to display your account info</p>}
+            
+            {visible == true ? alert() : <p className="logoText">QR ➡️</p>}
 
             <Fab className="navFab" onClick={handleClick} absolute top right medium>
                 <img className="navFabImg" onClick={handleClick} src={ethLogo} width="60px" height="40px" />
