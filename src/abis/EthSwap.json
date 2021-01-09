@@ -4223,7 +4223,8 @@
             }
           ],
           "name": "TokensPurchased",
-          "type": "event"
+          "type": "event",
+          "signature": "0x6faf93231a456e552dbc9961f58d9713ee4f2e69d15f1975b050ef0911053a7b"
         },
         "0x697c42d55a5e1fed3f464ec6f38b32546a0bd368dc8068b065c67566d73f3290": {
           "anonymous": false,
@@ -4254,16 +4255,17 @@
             }
           ],
           "name": "TokensSold",
-          "type": "event"
+          "type": "event",
+          "signature": "0x697c42d55a5e1fed3f464ec6f38b32546a0bd368dc8068b065c67566d73f3290"
         }
       },
       "links": {},
-      "address": "0xF5D08490b1C69311a5174454d77E296908765e18",
-      "transactionHash": "0x070a3f8aa0a7953c2f3b9cad1a04b6a929d6a8637231261147db4bc6ebfe5889"
+      "address": "0xb8d0E6758844cc23620a5A4037b1DF00fEA6a6D6",
+      "transactionHash": "0x666087ba753b7c7deffbb5828e0ef9dd2ace3d14bf15649c12774d28050d1722"
     }
   },
-  "schemaVersion": "3.3.3",
-  "updatedAt": "2021-01-08T02:38:39.605Z",
+  "schemaVersion": "3.0.22",
+  "updatedAt": "2021-01-08T20:53:59.131Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
