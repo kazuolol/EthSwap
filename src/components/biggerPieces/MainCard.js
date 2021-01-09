@@ -1,10 +1,34 @@
 import React, { useState } from 'react';
-import { Button, Card } from 'ui-neumorphism'
+import { Button, Card, Switch, TextField, overrideThemeVariables } from 'ui-neumorphism'
 import computer from '../../computer2.gif'
 import 'ui-neumorphism/dist/index.css'
 
+import { useDarkMode }  from '../../hooks/useDarkMode'
+
 
 const MainCard = ({ account, ethBalance, tokenBalance }) => {
+
+    // Dark mode
+
+    const [darkMode, setDarkMode] = useDarkMode(true)
+
+    const toggleDarkMode = (e) => {
+        e.preventDefault();
+        document.body.classList.toggle("dark-mode");
+        setDarkMode(!darkMode);
+      };
+
+      const overrideThemeVariables = ({
+        '--light-bg': '#E9B7B9',
+        '--light-bg-dark-shadow': '#ba9294',
+        '--light-bg-light-shadow': '#ffdcde',
+        '--dark-bg': '#292E35',
+        '--dark-bg-dark-shadow': '#21252a',
+        '--dark-bg-light-shadow': '#313740',
+        '--primary': '#8672FB',
+        '--primary-dark': '#4526f9',
+        '--primary-light': '#c7befd'
+      })
 
     const date = new Date().toString()
     
@@ -17,35 +41,46 @@ const MainCard = ({ account, ethBalance, tokenBalance }) => {
          
         <div className="centered">
         
-        <Card loading width={360} height={370}>
+        <Card className="ui-card" width={360} height={400}>
         
         <h1>Eth Swap!</h1>
         
         <h6>Welcome, {account} </h6>
             <form className="form">
-                    
-                    <label name="input1" className="inputLabel">{ethBalance} Ether</label>
-                    <input
-                        id="input1"
-                        type="text"
-                        className="formInput"
-                        placeholder="0"
-                        required />
-                    
-                   
-                    <label name="input2">{tokenBalance} Tokens</label>
-                    <input
-                        id="input2"
-                        type="text"
-                        className="formInput"
-                        placeholder="0"
-                        required />
-               
-                <Button type="submit" className="submitButton">🔀</Button>
-
-                
+                    <div>
+                        <div>
+                            <label name="input1" className="inputLabel">{ethBalance} Ether</label>
+                        </div>
+                        <TextField loading
+                            id="input1"
+                            type="text"
+                            className="formInput"
+                            placeholder="0"
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <div>
+                            <label name="input2">{tokenBalance} Tokens</label>
+                        </div>
+                        <TextField loading
+                            id="input2"
+                            type="text"
+                            className="formInput"
+                            placeholder="0"
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <Button className='ma-8' depressed>🔀</Button>
+                    </div>
+                    <div className="dark-mode__toggle">
+                        <Switch
+                            onClick={toggleDarkMode}
+                            className={darkMode ? "toggle toggled" : "toggle"}
+                        />
+                </div>
             </form>
-           
         </Card>
         </div>
         </>
