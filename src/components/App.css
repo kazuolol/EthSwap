@@ -18,13 +18,10 @@ body {
     width: 22.5rem;
     min-width: 10rem;
     
-    
-    
 }
 
-.card {
-    border: 2px solid red;
-    margin-top: 100rem;
+.ui-card {
+    margin: auto 0%;
 }
 
 .flexbox {
@@ -60,11 +57,10 @@ body {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     font-size: 15px;
-   
-    margin-top: 30px;
-    margin-left: 85.5rem;
-    margin-bottom: 10px;
-    position: absolute;
+    width:3%;
+    margin-right:7rem;
+    margin-top: 1.9rem;
+    float:right;
 }
 
 .logoText:hover {
@@ -72,18 +68,19 @@ body {
 }
 
 .formInput {
-    margin: 10px;
-    margin-top: 0px;
+    justify-content: center;
 }
 
 .weth {
     min-height: 100%;
 }
 
-.submitButton {   
-    margin-top: 10px;
+.submitButton {  
+    margin: 0 auto; 
+    margin-top: 5%;
+    /* margin-top: 10px;
     margin: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 3rem; */
 }
 
 .submitButton:hover {   
@@ -111,11 +108,14 @@ body {
    width: 10px;
 
 }
-   
 
+h6 {
+    margin-bottom: -2rem;
+}
 
-
-
+.ma-8 {
+    margin-bottom: 2%;
+}
 
 .centered { 
     text-align: center;
@@ -135,7 +135,8 @@ body {
 
 label {
     color: gray;
-    margin: 10px;
+    margin-top: 5%;
+    /* margin: 10px; */
     padding: -10px;
 }
 
@@ -162,6 +163,42 @@ label {
 .btn {
     position: absolute;
 }
+
+
+/* DARK MODE */
+
+
+/* .dark-mode__toggle {
+    height: 20px;
+    position: relative;
+    width: 15%;
+    margin:0 auto ;
+    float:right;
+  } */
+  
+  .toggle {
+    transition: 0.2s;
+  } 
+  
+  .toggled {
+    left: 18px;
+  }
+
+  .dark-mode {
+    color: rgb(255, 255, 255);
+    background-color: #131318;
+  
+  }
+
+  .dark-mode .ui-card {
+      background-color: #181820;
+      color: white;
+  }
+
+  .dark-mode .flexbox {
+    border: 1px solid red;
+    background-color: #181820;
+  }
 
 
 

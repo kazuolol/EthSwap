@@ -49,8 +49,10 @@ class App extends Component {
     } else {
       window.alert('token contract not deployed to detected network')
     }
+
     //load ethswap 
     const ethSwapData = EthSwap.networks[networkId]
+
 
     if (ethSwapData) {
       const ethSwap = new web3.eth.Contract(EthSwap.abi, ethSwapData.address)
@@ -83,7 +85,7 @@ class App extends Component {
       ethSwap: {},
       ethBalance: '0',
       tokenBalance: '0',
-      loading: true
+      loading: true,
     }
   }
 
@@ -106,10 +108,10 @@ class App extends Component {
     return (
       <>
         <QrButton className="qrButton" account={this.state.account} />
-        <div className="centered">
-          
-          {content}
-        </div>
+          <div className="centered">
+            
+            {content}
+          </div>
 
       </>
 
