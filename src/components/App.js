@@ -7,8 +7,9 @@ import MainCard from './biggerPieces/MainCard'
 import QrButton from './smallerPieces/QrButton'
 import './App.css';
 import 'ui-neumorphism/dist/index.css'
+import Weth from '../WETH_03.gif'
 
-import { ProgressBar } from '@react95/core'
+
 
 
 class App extends Component {
@@ -37,13 +38,13 @@ class App extends Component {
       const token = new web3.eth.Contract(Token.abi, tokenData.address)
       this.setState({ token })
 
-      let tokenBalance = await token.methods.balanceOf(this.state.account).call().toString()
-      console.log(tokenBalance)
+      let tokenBalance = await token.methods.balanceOf(this.state.account).call()
+      console.log('token balance', this.state.tokenBalance.toString())
 
-      console.log('token balance:', this.state.tokenBalance)
+      
       console.log('token contract:', token)
 
-      this.setState({ tokenBalance: tokenBalance })
+      this.setState({ tokenBalance: tokenBalance.toString() })
 
     } else {
       window.alert('token contract not deployed to detected network')
@@ -81,19 +82,21 @@ class App extends Component {
       token: {},
       ethSwap: {},
       ethBalance: '0',
-      tokenBalance: 0,
+      tokenBalance: '0',
       loading: true
     }
   }
 
   render() {
+
+    
     let content
 
     if (this.state.loading) {
       content = 
-        <button class="btn btn-primary mr-4" type="button">
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          <span class="sr-only">Loading...</span>
+        <button className="btn btn-primary mr-4" type="button">
+          <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span className="sr-only">Loading...</span>
         </button>
 
     } else {
@@ -102,9 +105,9 @@ class App extends Component {
 
     return (
       <>
-
         <QrButton className="qrButton" account={this.state.account} />
         <div className="centered">
+          
           {content}
         </div>
 
