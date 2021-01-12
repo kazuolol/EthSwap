@@ -8,6 +8,7 @@ import QrButton from './smallerPieces/QrButton'
 import './App.css';
 import 'ui-neumorphism/dist/index.css'
 import Weth from '../WETH_03.gif'
+import { Hash } from 'crypto';
 
 
 
@@ -77,6 +78,23 @@ class App extends Component {
     }
   }
 
+  buyTokens = (etherAmount) => {
+    this.setState({ loading: true })
+    this.state.ethSwap.methods.buyTokens()
+      .send({ value: etherAmount, from: this.state.account }).on('transactionHash', (hash) => {
+        this.setState({ loading: false })
+      })
+  }
+
+  sellTokens = (tokenAmount) => {
+    this.setState({ loading: true })
+    this.state.token.methods.approve(this.state.ethSwap.address, tokenAmount).send({ from: this.state.account }).on('transactionHash', (hash) => {
+      this.state.ethSwap.methods.sellTokens(tokenAmount).send({ from: this.state.account }).on('transactionHash', (hash) => {
+        this.setState({ loading: false })
+      })
+        })
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -88,6 +106,7 @@ class App extends Component {
       loading: true,
     }
   }
+
 
   render() {
 
@@ -102,7 +121,15 @@ class App extends Component {
         </button>
 
     } else {
-      content = <MainCard className="mainCard" account={this.state.account} ethBalance={this.state.ethBalance} tokenBalance={this.state.tokenBalance} />
+      content =
+        <MainCard
+          className="mainCard"
+          account={this.state.account}
+          ethBalance={this.state.ethBalance}
+          tokenBalance={this.state.tokenBalance}
+          buyTokens={this.buyTokens}
+          sellTokens={this.sellTokens}
+        />
     }
 
     return (

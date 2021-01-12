@@ -59,6 +59,14 @@ body {
     justify-content: right;
 }
 
+.buyOrSell {
+    color: rgb(0, 0, 255);
+    font-size: 2rem;
+    width: 30rem;
+    margin: 1rem;
+    float: left;
+}
+
 .logoText {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -215,8 +223,10 @@ label {
   }
 
   .sunOrMoon {
-      display: block;
-
+      
+     float: right;
+     margin-bottom: 2.0rem;
+     margin-left: 68.1rem;
       font-size: large;
       -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -227,6 +237,49 @@ label {
    
   }
 
+  .sunOrMoon:hover {
+      
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+     font-size: large;
+     cursor: pointer;
+     -webkit-touch-callout: none; /* iOS Safari */
+   -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+       -ms-user-select: none; /* Internet Explorer/Edge */
+           user-select: none; 
+  
+ }
+.sunOrMoon2 {
+    float: right;
+    margin-bottom: 2rem;
+    margin-left: 68.1rem;
+     font-size: large;
+     -webkit-touch-callout: none; /* iOS Safari */
+   -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+       -ms-user-select: none; /* Internet Explorer/Edge */
+           user-select: none; 
+}
+
+ .sunOrMoon2:hover {
+    float: right;
+    margin-bottom: 2.7rem;
+    margin-left: 68.1rem;
+     font-size: large;
+     -webkit-touch-callout: none; /* iOS Safari */
+   -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+       -ms-user-select: none; /* Internet Explorer/Edge */
+           user-select: none; 
+ }
+
+ 
+
 .mImg {
     margin-left: 45%;
 }
@@ -234,14 +287,7 @@ label {
 .altBalance {
     border: 2px solid red;
 }
-  .sunOrMoon:hover {
-      
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
-  }
- 
+  
   
   .toggled {
     right: 18px;

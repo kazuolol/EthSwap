@@ -7,36 +7,36 @@ import ethLogo from '../../Ethereum-3.gif'
 var QRCode = require('qrcode.react');
 
 
-    
 
-    
+
+
 
 function QrButton({ account }) {
 
     function alert() {
         return (
             <div className="flexbox">
-            
-            <QRCode className="qr" value={account} size={100} />
-    
-            <p class="mb-0"></p>
-            <p></p>
-        
-        </div>
-        )}
-    
-        const handleClick = (e) => {
-            e.preventDefault();
-            setVisible(!visible);
-        }
-    
-    
+
+                <QRCode className="qr" value={account} size={100} />
+
+
+
+            </div>
+        )
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setVisible(!visible);
+    }
+
+
 
     const [visible, setVisible] = useState(false);
 
     return (
         <>
-            
+
             {visible == true ? alert() : <p className="logoText">QR ➡️</p>}
 
             <Fab className="navFab" onClick={handleClick} absolute top right medium>
