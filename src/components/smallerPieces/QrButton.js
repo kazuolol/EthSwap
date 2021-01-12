@@ -16,12 +16,12 @@ function QrButton({ account }) {
     function alert() {
         return (
             <div className="flexbox">
-            <div className="alert alert-secondary shadow-soft mb-4 mb-lg-5" role="alert">
-            <QRCode value={account} size={100} />
+            
+            <QRCode className="qr" value={account} size={100} />
     
-            <p class="mb-0">This is your public key, you can scan it to send funds to this account.</p>
+            <p class="mb-0"></p>
             <p></p>
-        </div>
+        
         </div>
         )}
     
@@ -33,7 +33,6 @@ function QrButton({ account }) {
     
 
     const [visible, setVisible] = useState(false);
-    const date = new Date()
 
     return (
         <>

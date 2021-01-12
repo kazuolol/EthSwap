@@ -41,7 +41,7 @@ class App extends Component {
       let tokenBalance = await token.methods.balanceOf(this.state.account).call()
       console.log('token balance', this.state.tokenBalance.toString())
 
-      
+
       console.log('token contract:', token)
 
       this.setState({ tokenBalance: tokenBalance.toString() })
@@ -91,27 +91,27 @@ class App extends Component {
 
   render() {
 
-    
+
     let content
 
     if (this.state.loading) {
-      content = 
+      content =
         <button className="btn btn-primary mr-4" type="button">
           <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           <span className="sr-only">Loading...</span>
         </button>
 
     } else {
-      content = <MainCard className="mainCard" account={this.state.account} ethBalance={this.state.ethBalance} tokenBalance={this.state.tokenBalance}/>
+      content = <MainCard className="mainCard" account={this.state.account} ethBalance={this.state.ethBalance} tokenBalance={this.state.tokenBalance} />
     }
 
     return (
       <>
         <QrButton className="qrButton" account={this.state.account} />
-          <div className="centered">
-            
-            {content}
-          </div>
+        <div className="centered">
+
+          {content}
+        </div>
 
       </>
 

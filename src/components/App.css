@@ -38,6 +38,12 @@ body {
     margin-top: 25rem;
     margin-right: 800px;
     opacity: 0.9;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
 }
 
 .computer:hover {
@@ -73,6 +79,12 @@ body {
 
 .weth {
     min-height: 100%;
+}
+
+#ether {
+   height: 30px;
+   width: 30px;
+   margin: -2px;
 }
 
 .submitButton {  
@@ -139,10 +151,16 @@ label {
     /* margin: 10px; */
     padding: -10px;
 }
-
+.altcoin {
+    display: block;
+}
 .qrButton {
     width: 5px;
-    border: 2px solid red;
+    
+}
+
+.qr {
+    margin: 1rem;
 }
 
 .identicon {
@@ -150,11 +168,7 @@ label {
     margin-right: 5px;
 }
 
-.qrText {
-    border: 2px solid red;
-    
-    
-}
+
 
 .account:hover {
     color: rgb(92, 156, 175);
@@ -176,19 +190,70 @@ label {
     float:right;
   } */
   
+  .toggleWrapper {
+      display: flex;
+      align-items: center;
+  }
+
+  .toggle:hover {
+     
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  }
+
   .toggle {
+
     position: absolute;
-    transition: 0.2s;
-  } 
+    top: 5px;
+    margin: 50px;
+    float: right;
+      
+    
+      
+  }
+
+  .sunOrMoon {
+      display: block;
+
+      font-size: large;
+      -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+   
+  }
+
+.mImg {
+    margin-left: 45%;
+}
+
+.altBalance {
+    border: 2px solid red;
+}
+  .sunOrMoon:hover {
+      
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  }
+ 
   
   .toggled {
-    left: 18px;
+    right: 18px;
+    position: absolute;
+    top: 0px;
+    
+      float: right;
   }
 
   .dark-mode {
     color: rgb(255, 255, 255);
     background-color: #222221;
-  
   }
 
   .dark-mode .ui-card {
@@ -198,8 +263,8 @@ label {
   }
 
   .dark-mode .flexbox {
-    border: 1px solid red;
-    background-color: #181820;
+    
+    background-color: #222221;
   }
 
   /* .dark-mode .navFab {
