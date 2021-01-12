@@ -57,7 +57,7 @@ const BuyCard = ({ account, ethBalance, tokenBalance, buyTokens }) => {
                     
                     let etherAmount
                     etherAmount = output.toString()
-                    etherAmount = window.web3.utils.toWei(etherAmount, 'Ether')
+                    etherAmount = window.web3.utils.toWei(etherAmount, 'ether')
                     console.log(etherAmount)
                     buyTokens(etherAmount / 100)
                 }}>

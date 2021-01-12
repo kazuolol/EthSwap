@@ -11,9 +11,9 @@ const SellCard = ({ account, ethBalance, tokenBalance, sellTokens }) => {
 
     const [darkMode, setDarkMode] = useDarkMode(true)
 
-    const [output, setOutput] = useState(ethBalance && tokenBalance  && account ? '' : null)
+    const [output, setOutput] = useState(ethBalance && tokenBalance && account ? '' : null)
 
-    
+
 
     const toggleDarkMode = (e) => {
         e.preventDefault();
@@ -33,75 +33,75 @@ const SellCard = ({ account, ethBalance, tokenBalance, sellTokens }) => {
     return (
         <>
 
-      
-        <div className="right">
 
-        </div>
-        <span className="sunOrMoon2" onClick={toggleDarkMode}>{content}</span>
-        <div className="centered">
+            <div className="right">
 
-            <Card loading className="ui-card" width={400} height={400}>
+            </div>
+            <span className="sunOrMoon2" onClick={toggleDarkMode}>{content}</span>
+            <div className="centered">
 
-                <h1>EthSell</h1>
+                <Card loading className="ui-card" width={400} height={400}>
 
-                <h6>Welcome, {account} </h6>
-                <form className="form" onSubmit={(event) => {
-                    
-                    let etherAmount
-                    etherAmount = output.toString()
-                    etherAmount = window.web3.utils.toWei(etherAmount, 'Ether')
-                    console.log('ether amount:', etherAmount)
-                    sellTokens(etherAmount)
-                }}>
+                    <h1>EthSell</h1>
 
-                    <div>
+                    <h6>Welcome, {account} </h6>
+                    <form className="form" onSubmit={(event) => {
+
+                        event.preventDefault()
+                        let etherAmount
+                        etherAmount = (output * 100).toString()
+                        etherAmount = window.web3.utils.toWei(etherAmount, 'ether')
+                        sellTokens(etherAmount)
+                    }}>
+
                         <div>
-                            <label name="input1" className="inputLabel">{window.web3.utils.fromWei(tokenBalance)} MEM </label> <img src={altcoin} height='28' />
+                            <div>
+                                <label name="input1" className="inputLabel">{window.web3.utils.fromWei(tokenBalance)} MEM </label> <img src={altcoin} height='28' />
+
+                            </div>
+
+                            <TextField
+                                id="input1"
+                                type="text"
+                                onChange={(event => {
+                                    console.log("changing")
+                                    const tokenAmount = event.value
+                                    setOutput(tokenAmount / 100)
+                                    console.log(tokenAmount)
+                                })}
+
+
+                                className="formInput"
+                                placeholder="0"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <div>
+
+                                <label>{window.web3.utils.fromWei(ethBalance)} ETH </label> <img src={ether} height='28' />
+
+                            </div>
+                            <TextField
+
+                                type="text"
+                                className="formInput"
+                                placeholder={output.toString()}
+                                disabled
+
+                            />
 
                         </div>
 
-                        <TextField
-                            id="input1"
-                            type="text"
-                            onChange={(event => {
-                                console.log("changing")
-                                const tokenAmount = event.value
-                                setOutput(tokenAmount / 100)
-                                console.log(output)
-                            })}
-
-
-                            className="formInput"
-                            placeholder="0"
-                            required
-                        />
-                    </div>
-                    <div>
                         <div>
-
-                            <label>{window.web3.utils.fromWei(ethBalance)} MEM </label> <img src={ether} height='28' />
-
+                            <Button className='ma-8' depressed>🔀</Button>
+                            <div>Exchange rate: 100 MEM = 1 ETH</div>
                         </div>
-                        <TextField
+                    </form>
 
-                            type="text"
-                            className="formInput"
-                            placeholder={output.toString()}
-                            disabled
-
-                        />
-
-                    </div>
-
-                    <div>
-                        <Button className='ma-8' depressed>🔀</Button>
-                        <div>Exchange rate: 100 MEM = 1 ETH</div>
-                    </div>
-                </form>
-
-            </Card>
-        </div>
-    </>
+                </Card>
+            </div>
+        </>
     )
 }
 
