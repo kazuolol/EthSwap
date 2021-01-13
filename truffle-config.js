@@ -1,7 +1,7 @@
 require('babel-register');
 require('babel-polyfill');
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "pizza absent when future return predict enough drift staff mom lab confirm";
+var mnemonic = "<12 word private key>";
 
 module.exports = {
   networks: {
