@@ -225,8 +225,8 @@ label {
   .sunOrMoon {
       
      float: right;
-     margin-bottom: 2.0rem;
-     margin-left: 68.1rem;
+
+  
       font-size: large;
       -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -236,6 +236,7 @@ label {
             user-select: none; 
    
   }
+
 
   .sunOrMoon:hover {
       

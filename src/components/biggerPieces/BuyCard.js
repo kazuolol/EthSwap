@@ -45,11 +45,11 @@ const BuyCard = ({ account, ethBalance, tokenBalance, buyTokens }) => {
            
 
         </div>
-        <span className="sunOrMoon" onClick={toggleDarkMode}>{content}</span>
+        
         <div className="centered">
 
             <Card loading className="ui-card" width={400} height={400}>
-
+            <span className="sunOrMoon" onClick={toggleDarkMode}>{content}</span>
                 <h1>EthSwap</h1>
 
                 <h6>Welcome, {account} </h6>

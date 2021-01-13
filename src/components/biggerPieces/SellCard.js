@@ -34,16 +34,13 @@ const SellCard = ({ account, ethBalance, tokenBalance, sellTokens }) => {
         <>
 
 
-            <div className="right">
-
-            </div>
-            <span className="sunOrMoon2" onClick={toggleDarkMode}>{content}</span>
+        
             <div className="centered">
 
                 <Card loading className="ui-card" width={400} height={400}>
+                <span className="sunOrMoon" onClick={toggleDarkMode}>{content}</span>
 
-                    <h1>EthSell</h1>
-
+                    <h1>EthSell</h1> 
                     <h6>Welcome, {account} </h6>
                     <form className="form" onSubmit={(event) => {
 
