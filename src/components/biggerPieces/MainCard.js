@@ -1,22 +1,50 @@
-import React, { useState } from 'react';
-import { Card } from 'ui-neumorphism'
-import 'ui-neumorphism/dist/index.css'
-import QrButton from '../smallerPieces/QrButton'
+import React, { useState, useRef } from 'react';
+import BuyCard from './BuyCard'
+import SellCard from './SellCard'
+import computer from '../../computer.gif'
+import computer2 from '../../computer2.gif'
 
-function MainCard({ account }) {
 
-    const [visible, setVisible] = useState(false);
+
+const MainCard = ({ account, ethBalance, tokenBalance, buyTokens, sellTokens }) => {
+
+    const [form, changeForm] = useState(true)
+    
+    let content;
+
+    let comp1 = <img src={computer} alt="sell" onClick={(event) => {
+        changeForm(false)}} className="computer" />
+
+    let comp2 = <img src={computer2} alt="buy" onClick={(event) => {
+        changeForm(true)}} className="computer" />
+    
+
+    if (form === true) {
+        content = <BuyCard account={account} ethBalance={ethBalance} 
+        tokenBalance={tokenBalance} 
+        buyTokens={buyTokens}
+        /> 
+    } else {
+        content = <SellCard account={account} 
+        ethBalance={ethBalance} 
+        tokenBalance={tokenBalance}  
+        sellTokens={sellTokens}
+        />
+        
+    }
+
     return (
-        //eventually i want to hit this api with a useHook and useEffect to map through a data state variable and show the current block on mainnet ethereum
-        //use this article https://www.robinwieruch.de/react-hooks-fetch-data
+        
+        <>
+        
+        {content}
+       
+        {form ? comp1 : comp2}
+        <span className="buyOrSell" onClick={(event) => {
+            changeForm(!form)
+        }}>{form === true ? 'click pc to sell :-<' : 'click pc to buy :->'}</span>
 
-        <Card loading width={350} height={350}>
-
-            {/* <QrButton
-                className="qrButton"
-                account={account} /> */}
-                
-        </Card>
+       </>
 
     )
 }
