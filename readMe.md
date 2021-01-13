@@ -8,5 +8,5 @@ Built using Solidity, Web3, Truffle, Ganache, and React.
 
 Tested with Mocha/Chai.
 
-<img src={https://i.imgur.com/dupqZyN.gif} />
+<img src="https://i.imgur.com/dupqZyN.gif" />
 
